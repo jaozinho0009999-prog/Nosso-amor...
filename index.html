@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nossa História 💖</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      position: relative;
+    }
+    header h1 {
+      font-size: 2.6rem;
+      color: #b30059;
+      margin-bottom: 10px;
+    }
+    header p { font-size: 1.2rem; }
+
+    .snoopy-top {
+      width: 120px;
+      margin: 20px auto 0;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+    section h2 {
+      color: #b30059;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .timeline { display: grid; gap: 15px; }
+    .event {
+      background: #ffe6ee;
+      border-radius: 14px;
+      padding: 15px;
+    }
+    .event strong { color: #b30059; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .love-letter {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: #ff4d88;
+      animation: float 8s linear infinite;
+      font-size: 18px;
+    }
+    @keyframes float {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Música de fundo: Aliança – Tribalistas -->
+  <!-- Observação: alguns celulares exigem interação do usuário para tocar -->
+  <audio controls autoplay loop style="display:block; margin: 10px auto;">
+    <source src="alianca-tribalistas.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- Corações animados -->
+  <div class="hearts">
+    <span class="heart" style="left:10%; animation-delay:0s;">❤</span>
+    <span class="heart" style="left:30%; animation-delay:2s;">❤</span>
+    <span class="heart" style="left:50%; animation-delay:4s;">❤</span>
+    <span class="heart" style="left:70%; animation-delay:1s;">❤</span>
+    <span class="heart" style="left:90%; animation-delay:3s;">❤</span>
+  </div>
+
+  <header>
+    <h1>João ❤️ [Nome dela]</h1>
+    <p>Uma lembrança da nossa história</p>
+    <!-- Snoopy (substitua o link se quiser outra imagem) -->
+    <img class="snoopy-top" src="https://i.imgur.com/9QZ7Z9R.png" alt="Snoopy apaixonado" />
+  </header>
+
+  <section>
+    <h2>📅 Nossa História</h2>
+    <div class="timeline">
+      <div class="event">
+        <strong>Primeira conversa:</strong> 29/06 – quando tudo começou de um jeito simples, mas especial.
+      </div>
+      <div class="event">
+        <strong>Primeiro beijo:</strong> 27/07 – um momento que mora no meu coração até hoje.
+      </div>
+      <div class="event">
+        <strong>O que eu sinto hoje:</strong> Mesmo afastados, você continua sendo muito importante pra mim.
+      </div>
+    </div>
+      <div class="event">
+        <strong>Primeiro beijo:</strong> [data] – [descrição curta]
+      </div>
+      <div class="event">
+        <strong>Pedido de namoro:</strong> [data] – [descrição curta]
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📸 Nossos Momentos</h2>
+    <div class="gallery">
+      <img src="foto1.jpg" alt="Momento 1" />
+      <img src="foto2.jpg" alt="Momento 2" />
+      <img src="foto3.jpg" alt="Momento 3" />
+    </div>
+    <p style="text-align:center; margin-top:10px; font-size:0.9rem;">(Substitua as imagens pelos seus arquivos)</p>
+  </section>
+
+  <section>
+    <h2>💌 Para Você</h2>
+    <p class="love-letter">
+      Valentina, eu fiz esse site com o coração apertado, mas cheio de amor.
+      Eu sei que errei, sei que algumas atitudes minhas te machucaram e te deixaram triste.
+      Nunca foi minha intenção te afastar.
+      <br><br>
+      Você é alguém muito especial pra mim, desde a nossa primeira conversa no dia 29/06,
+      até o nosso primeiro beijo em 27/07, que eu nunca vou esquecer.
+      <br><br>
+      Eu sinto muito por tudo o que aconteceu.
+      Se ainda existir um espacinho no seu coração, eu prometo tentar ser melhor,
+      aprender com meus erros e cuidar de você como você merece.
+      <br><br>
+      Não quero te perder.
+    </p>
+  </section>
+
+  <footer>
+    <p>Feito com amor 💕 para sempre nós dois</p>
+  </footer>
+
+</body>
+    </html>
