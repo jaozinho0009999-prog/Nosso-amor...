@@ -101,6 +101,17 @@
       header h1 { font-size: 2rem; }
     }
   </style>
+  @keyframes tremidinha {
+  0% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-2px) rotate(-1deg); }
+  50% { transform: translateX(2px) rotate(1deg); }
+  75% { transform: translateX(-1px) rotate(-0.5deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.snoopy-top.tremer {
+  animation: tremidinha 0.4s ease;
+}
 </head>
 <body>
   <img src="Snoopy.png" class="snoopy">
@@ -179,6 +190,19 @@
   <footer>
     <p>Feito com amor 💕 para sempre nós dois</p>
   </footer>
+<script>
+  const audio = document.querySelector("audio");
+  const snoopy = document.querySelector(".snoopy-top");
 
+  audio.addEventListener("timeupdate", () => {
+    if (Math.floor(audio.currentTime * 2) % 2 === 0) {
+      snoopy.classList.add("tremer");
+
+      setTimeout(() => {
+        snoopy.classList.remove("tremer");
+      }, 400);
+    }
+  });
+</script>
 </body>
     </html>
