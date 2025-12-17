@@ -179,19 +179,5 @@
   <footer>
     <p>Feito com amor 💕 para sempre nós dois</p>
   </footer>
-<script>
-  const audio = document.querySelector("audio");
-  const snoopy = document.querySelector(".snoopy-top");
-
-  audio.addEventListener("timeupdate", () => {
-    if (Math.floor(audio.currentTime * 2) % 2 === 0) {
-      snoopy.classList.add("tremer");
-
-      setTimeout(() => {
-        snoopy.classList.remove("tremer");
-      }, 400);
-    }
-  });
-</script>
 </body>
     </html>
