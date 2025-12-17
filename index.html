@@ -99,9 +99,21 @@
       header h1 { font-size: 2rem; }
     }
   </style>
+  .snoopy {
+  width: 150px;
+  display: block;
+  margin: 20px auto;
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
 </head>
 <body>
-
+<img src="Snoopy.png" alt="Snoopy" class="snoopy">
   <!-- Música de fundo: Aliança – Tribalistas -->
   <!-- Observação: alguns celulares exigem interação do usuário para tocar -->
   <audio controls autoplay loop style="display:block; margin: 10px auto;">
