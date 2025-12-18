@@ -101,17 +101,7 @@
       header h1 { font-size: 2rem; }
     }
   </style>
-  .start-btn {
-  display: block;
-  margin: 15px auto;
-  padding: 10px 18px;
-  background: #ff9bb3;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  color: white;
-  cursor: pointer;
-}
+  
 </head>
 <body>
   <img src="Snoopy.png" class="snoopy">
@@ -193,21 +183,15 @@
 
   <footer>
   <p>Feito com amor 💕 para sempre nós dois</p>
-    <audio id="musica" loop>
-  <source src="alianca.mp3" type="audio/mpeg">
-</audio>
-
-<script>
+    <script>
   const audio = document.getElementById("musica");
+  const btn = document.getElementById("start");
 
-  window.addEventListener("load", () => {
-    audio.play().catch(() => {
-      document.body.addEventListener("click", () => {
-        audio.play();
-      }, { once: true });
-    });
+  btn.addEventListener("click", () => {
+    audio.play();
+    btn.style.display = "none";
   });
-</script>
+    </script>
   </footer>
 </body>
     </html>
