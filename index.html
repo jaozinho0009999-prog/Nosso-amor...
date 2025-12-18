@@ -101,12 +101,27 @@
       header h1 { font-size: 2rem; }
     }
   </style>
+  .start-btn {
+  display: block;
+  margin: 15px auto;
+  padding: 10px 18px;
+  background: #ff9bb3;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
 </head>
 <body>
   <img src="Snoopy.png" class="snoopy">
+ <button id="start" class="start-btn">
+  💖 Tocar nossa música
+ </button>
   <!-- Música de fundo: Aliança – Tribalistas -->
   <!-- Observação: alguns celulares exigem interação do usuário para tocar -->
   <audio controls autoplay loop style="display:block; margin: 10px auto;">
+   audio id="musica" loop>
     <source src="alianca-tribalistas.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
@@ -177,7 +192,22 @@
   </section>
 
   <footer>
-    <p>Feito com amor 💕 para sempre nós dois</p>
+  <p>Feito com amor 💕 para sempre nós dois</p>
+    <audio id="musica" loop>
+  <source src="alianca.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const audio = document.getElementById("musica");
+
+  window.addEventListener("load", () => {
+    audio.play().catch(() => {
+      document.body.addEventListener("click", () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
+</script>
   </footer>
 </body>
     </html>
