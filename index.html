@@ -138,6 +138,42 @@
   border-radius: 20px;
   
 }
+    .tempo-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.tempo-item {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 15px 18px;
+  min-width: 90px;
+  text-align: center;
+  animation: respirar 2.5s infinite ease-in-out;
+}
+
+.tempo-item span {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ffb6c1;
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.9);
+}
+
+.tempo-item small {
+  font-size: 0.9rem;
+  color: #fff;
+  opacity: 0.85;
+}
+
+@keyframes respirar {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
   </style>
 </head>
 <body>
@@ -224,12 +260,31 @@
     estamos juntos há:
   </p>
 
-  <div id="tempo">
-    <span id="meses">0</span> meses,
-    <span id="dias">0</span> dias,
-    <span id="horas">0</span> horas,
-    <span id="minutos">0</span> minutos e
-    <span id="segundos">0</span> segundos 💖
+  <div id="tempo" class="tempo-box">
+  <div class="tempo-item">
+    <span id="meses">0</span>
+    <small>meses</small>
+  </div>
+
+  <div class="tempo-item">
+    <span id="dias">0</span>
+    <small>dias</small>
+  </div>
+
+  <div class="tempo-item">
+    <span id="horas">0</span>
+    <small>horas</small>
+  </div>
+
+  <div class="tempo-item">
+    <span id="minutos">0</span>
+    <small>minutos</small>
+  </div>
+
+  <div class="tempo-item">
+    <span id="segundos">0</span>
+    <small>segundos</small>
+  </div>
   </div>
 </section>
   <footer>
