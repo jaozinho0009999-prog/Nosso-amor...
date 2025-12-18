@@ -116,7 +116,25 @@
   display: flex;
   justify-content: center;
 }
+.contador {
+  text-align: center;
+  margin: 40px 20px;
+  padding: 20px;
+  background: rgba(255, 182, 193, 0.15);
+  border-radius: 20px;
+}
 
+.contador h2 {
+  color: #ffb6c1;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+#tempo {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -196,7 +214,21 @@
       Não quero te perder.
     </p>
   </section>
+<section class="contador">
+  <h2>💞 Nosso tempo juntos</h2>
+  <p>
+    Desde 29 de junho de 2025, às 21:00<br>
+    estamos juntos há:
+  </p>
 
+  <div id="tempo">
+    <span id="meses">0</span> meses,
+    <span id="dias">0</span> dias,
+    <span id="horas">0</span> horas,
+    <span id="minutos">0</span> minutos e
+    <span id="segundos">0</span> segundos 💖
+  </div>
+</section>
   <footer>
   <p>Feito com amor 💕 para sempre nós dois</p>
     <script>
@@ -210,5 +242,34 @@
   });
     </script>
   </footer>
+  <script>
+  const inicio = new Date(2025, 5, 29, 21, 0, 0); 
+  // mês 5 = junho (começa do 0)
+
+  function atualizarTempo() {
+    const agora = new Date();
+    let diff = agora - inicio;
+
+    const segundosTotais = Math.floor(diff / 1000);
+    const minutosTotais = Math.floor(segundosTotais / 60);
+    const horasTotais = Math.floor(minutosTotais / 60);
+    const diasTotais = Math.floor(horasTotais / 24);
+
+    const meses = Math.floor(diasTotais / 30);
+    const dias = diasTotais % 30;
+    const horas = horasTotais % 24;
+    const minutos = minutosTotais % 60;
+    const segundos = segundosTotais % 60;
+
+    document.getElementById("meses").innerText = meses;
+    document.getElementById("dias").innerText = dias;
+    document.getElementById("horas").innerText = horas;
+    document.getElementById("minutos").innerText = minutos;
+    document.getElementById("segundos").innerText = segundos;
+  }
+
+  setInterval(atualizarTempo, 1000);
+  atualizarTempo();
+  </script>
 </body>
     </html>
