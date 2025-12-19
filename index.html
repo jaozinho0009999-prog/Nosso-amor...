@@ -205,27 +205,23 @@
   width: 280px;
   height: 180px;
   background: #f6b1c8;
+  border-radius: 14px;
   position: relative;
-  border-radius: 12px;
   box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
 
 .tampa {
   position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 140px solid transparent;
-  border-right: 140px solid transparent;
-  border-bottom: 90px solid #f29dbd;
-  top: -90px;
-  left: 0;
-  transform-origin: bottom;
-  transition: transform 0.8s ease;
+  inset: 0;
+  background: linear-gradient(#f4a9c7, #f29dbd);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-}
-
-.envelope.aberto .tampa {
-  transform: rotateX(180deg);
+  font-weight: bold;
+  color: #7a2e4d;
+  z-index: 3;
 }
 
 .carta {
@@ -239,27 +235,21 @@
   padding: 18px;
   opacity: 0;
   transform: translateY(0);
-  transition: transform 1s ease, opacity 1s ease;
+  transition: all 1s ease;
   box-shadow:
     0 10px 20px rgba(0,0,0,0.25),
     inset 0 0 30px rgba(139,69,19,0.15);
   font-family: Georgia, serif;
 }
 
-.carta::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 6px;
-  background:
-    radial-gradient(circle at top left, rgba(139,69,19,0.25), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(139,69,19,0.25), transparent 40%);
-  pointer-events: none;
-}
-
 .envelope.aberto .carta {
   opacity: 1;
-  transform: translateY(-200px);
+  transform: translateY(-220px);
+}
+
+.envelope.aberto .tampa {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .abas {
@@ -273,11 +263,9 @@
   border: none;
   padding: 6px 14px;
   border-radius: 16px;
-  cursor: pointer;
   font-size: 12px;
   font-weight: bold;
   color: #7a2e4d;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
 
 .texto-carta {
@@ -288,7 +276,7 @@
 
 .escondido {
   display: none;
-  }
+}
   </style>
 </head>
 <body>
@@ -506,8 +494,11 @@ com mais amor e menos feridas. 💗
   observer.observe(secaoPoema);
   </script>
   <section class="carta-area">
-  <div class="envelope" id="envelope">
-    <div class="tampa" id="abrirCarta"></div>
+  <div class="envelope">
+
+    <div class="tampa" id="abrirCarta">
+      <span>💌 Clique para abrir</span>
+    </div>
 
     <div class="carta">
       <div class="abas">
@@ -518,15 +509,13 @@ com mais amor e menos feridas. 💗
       <div class="texto-carta" id="hoje"></div>
       <div class="texto-carta escondido" id="amanha"></div>
     </div>
+
   </div>
 </section>
-  <script>
-  const envelope = document.getElementById("envelope");
+<script>
   const abrirCarta = document.getElementById("abrirCarta");
+  const envelope = document.querySelector(".envelope");
   const tecla = document.getElementById("tecla");
-
-  let iniciadoHoje = false;
-  let iniciadoAmanha = false;
 
   const textoHoje = `
 Hoje eu só quero ser honesto.
@@ -537,47 +526,47 @@ e eu sinto muito por isso.
 
   const textoAmanha = `
 Amanhã eu quero cuidar melhor.
-Ser mais calmo, mais atento,
-e transformar atitudes em amor.
+Com mais calma, mais respeito
+e mais carinho em cada detalhe.
 `;
 
-  function escreverTexto(texto, elemento) {
-    let i = 0;
-    elemento.textContent = "";
+  let iniciouHoje = false;
+  let iniciouAmanha = false;
 
-    function escrever() {
+  function escrever(texto, el) {
+    let i = 0;
+    el.textContent = "";
+    function loop() {
       if (i < texto.length) {
-        elemento.textContent += texto.charAt(i);
+        el.textContent += texto[i];
         tecla.currentTime = 0;
         tecla.play();
         i++;
-        setTimeout(escrever, 80);
+        setTimeout(loop, 80);
       }
     }
-    escrever();
+    loop();
   }
 
   abrirCarta.addEventListener("click", () => {
     envelope.classList.add("aberto");
-
-    if (!iniciadoHoje) {
-      iniciadoHoje = true;
-      escreverTexto(textoHoje, document.getElementById("hoje"));
+    if (!iniciouHoje) {
+      iniciouHoje = true;
+      escrever(textoHoje, document.getElementById("hoje"));
     }
   });
 
   function mostrarCarta(tipo) {
     document.getElementById("hoje").classList.add("escondido");
     document.getElementById("amanha").classList.add("escondido");
-
     const alvo = document.getElementById(tipo);
     alvo.classList.remove("escondido");
 
-    if (tipo === "amanha" && !iniciadoAmanha) {
-      iniciadoAmanha = true;
-      escreverTexto(textoAmanha, alvo);
+    if (tipo === "amanha" && !iniciouAmanha) {
+      iniciouAmanha = true;
+      escrever(textoAmanha, alvo);
     }
   }
-  </script>
+</script>
 </body>
     </html>
