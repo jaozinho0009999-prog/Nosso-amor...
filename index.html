@@ -277,6 +277,10 @@
 .escondido {
   display: none;
 }
+    .abas button:focus {
+  background: #f38fb5;
+  color: white;
+    }
   </style>
 </head>
 <body>
@@ -502,9 +506,9 @@ com mais amor e menos feridas. 💗
 
     <div class="carta">
       <div class="abas">
-        <button onclick="mostrarCarta('hoje')">Hoje</button>
-        <button onclick="mostrarCarta('amanha')">Amanhã</button>
-      </div>
+  <button id="btnHoje">Hoje</button>
+  <button id="btnAmanha">Amanhã</button>
+</div>
 
       <div class="texto-carta" id="hoje"></div>
       <div class="texto-carta escondido" id="amanha"></div>
@@ -556,17 +560,28 @@ e mais carinho em cada detalhe.
     }
   });
 
-  function mostrarCarta(tipo) {
-    document.getElementById("hoje").classList.add("escondido");
-    document.getElementById("amanha").classList.add("escondido");
-    const alvo = document.getElementById(tipo);
-    alvo.classList.remove("escondido");
+  const btnHoje = document.getElementById("btnHoje");
+const btnAmanha = document.getElementById("btnAmanha");
 
-    if (tipo === "amanha" && !iniciouAmanha) {
-      iniciouAmanha = true;
-      escrever(textoAmanha, alvo);
-    }
+btnHoje.addEventListener("click", () => {
+  document.getElementById("hoje").classList.remove("escondido");
+  document.getElementById("amanha").classList.add("escondido");
+
+  if (!iniciouHoje) {
+    iniciouHoje = true;
+    escrever(textoHoje, document.getElementById("hoje"));
   }
+});
+
+btnAmanha.addEventListener("click", () => {
+  document.getElementById("amanha").classList.remove("escondido");
+  document.getElementById("hoje").classList.add("escondido");
+
+  if (!iniciouAmanha) {
+    iniciouAmanha = true;
+    escrever(textoAmanha, document.getElementById("amanha"));
+  }
+});
 </script>
 </body>
     </html>
