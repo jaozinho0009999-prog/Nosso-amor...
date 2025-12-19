@@ -259,9 +259,11 @@
 
 .envelope.aberto .carta {
   opacity: 1;
-  transform: translateY(-140px);
+  transform: translateY(-180px);
 }
-
+.carta {
+  transition: transform 1s ease, opacity 1s ease;
+}
 .abas {
   display: flex;
   justify-content: space-around;
@@ -269,12 +271,21 @@
 }
 
 .abas button {
-  background: #f8c8dc;
+  background: linear-gradient(135deg, #f8b6cc, #f4a9c7);
   border: none;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 13px;
+  color: #7a2e4d;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.abas button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
 .texto-carta {
@@ -564,14 +575,16 @@ e amor de verdade.
     escrever();
   }
 
-  envelope.addEventListener("click", () => {
-    envelope.classList.add("aberto");
+  envelope.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") return;
 
-    if (!iniciadoHoje) {
-      iniciadoHoje = true;
-      escreverTexto(textoHoje, document.getElementById("hoje"));
-    }
-  });
+  envelope.classList.add("aberto");
+
+  if (!iniciadoHoje) {
+    iniciadoHoje = true;
+    escreverTexto(textoHoje, document.getElementById("hoje"));
+  }
+});
 
   function mostrarCarta(tipo) {
     document.getElementById("hoje").classList.add("escondido");
