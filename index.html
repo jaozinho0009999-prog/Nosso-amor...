@@ -198,17 +198,16 @@
 .carta-area {
   display: flex;
   justify-content: center;
-  margin: 100px 0;
+  margin: 120px 0;
 }
 
 .envelope {
   width: 280px;
   height: 180px;
-  background: #f8c8dc;
+  background: #f6b1c8;
   position: relative;
-  cursor: pointer;
   border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
 
 .tampa {
@@ -217,11 +216,12 @@
   height: 0;
   border-left: 140px solid transparent;
   border-right: 140px solid transparent;
-  border-bottom: 90px solid #f4a9c7;
+  border-bottom: 90px solid #f29dbd;
   top: -90px;
   left: 0;
   transform-origin: bottom;
   transition: transform 0.8s ease;
+  cursor: pointer;
 }
 
 .envelope.aberto .tampa {
@@ -243,9 +243,10 @@
   box-shadow:
     0 10px 20px rgba(0,0,0,0.25),
     inset 0 0 30px rgba(139,69,19,0.15);
-  font-family: "Georgia", serif;
+  font-family: Georgia, serif;
 }
-    .carta::after {
+
+.carta::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -255,11 +256,19 @@
     radial-gradient(circle at bottom right, rgba(139,69,19,0.25), transparent 40%);
   pointer-events: none;
 }
-    .envelope.aberto .carta {
+
+.envelope.aberto .carta {
   opacity: 1;
   transform: translateY(-200px);
-    }
-    .abas button {
+}
+
+.abas {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.abas button {
   background: #f8b6cc;
   border: none;
   padding: 6px 14px;
@@ -269,7 +278,17 @@
   font-weight: bold;
   color: #7a2e4d;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-    }
+}
+
+.texto-carta {
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.escondido {
+  display: none;
+  }
   </style>
 </head>
 <body>
