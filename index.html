@@ -238,15 +238,7 @@
         <strong>O que eu sinto hoje:</strong> Mesmo afastados, você continua sendo muito importante pra mim.
       </div>
     </div>
-      <div class="event">
-        <strong>Primeiro beijo:</strong> [data] – [descrição curta]
-      </div>
-      <div class="event">
-        <strong>Pedido de namoro:</strong> [data] – [descrição curta]
-      </div>
-    </div>
   </section>
-
   <section>
     <h2>📸 Nossos Momentos</h2>
     <div class="gallery">
@@ -254,7 +246,7 @@
       <img src="foto2.jpg" alt="Momento 2" />
       <img src="foto3.jpg" alt="Momento 3" />
     </div>
-    <p style="text-align:center; margin-top:10px; font-size:0.9rem;">(Substitua as imagens pelos seus arquivos)</p>
+    <p style="text-align:center; margin-top:10px; font-size:0.9rem;"></p>
   </section>
 
   <section>
@@ -396,17 +388,28 @@ com mais amor e menos feridas. 💗
 `;
 
   const elemento = document.getElementById("texto-poema");
+  const secaoPoema = document.getElementById("poema");
   let i = 0;
+  let iniciado = false;
 
   function escreverPoema() {
     if (i < poema.length) {
       elemento.textContent += poema.charAt(i);
       i++;
-      setTimeout(escreverPoema, 60);
+      setTimeout(escreverPoema, 80); // ← velocidade (ajuste se quiser)
     }
   }
 
-  escreverPoema();
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !iniciado) {
+      iniciado = true;
+      escreverPoema();
+    }
+  }, {
+    threshold: 0.4
+  });
+
+  observer.observe(secaoPoema);
   </script>
 </body>
     </html>
