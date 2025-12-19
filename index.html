@@ -269,9 +269,12 @@
 }
 
 .texto-carta {
+  white-space: pre-line;
+  display: block;
+  color: #4a2c2a;
   font-size: 14px;
   line-height: 1.6;
-  white-space: pre-line;
+  margin-top: 10px
 }
 
 .escondido {
@@ -559,27 +562,26 @@ e mais carinho em cada detalhe.
       escrever(textoHoje, document.getElementById("hoje"));
     }
   });
-
-  const btnHoje = document.getElementById("btnHoje");
-const btnAmanha = document.getElementById("btnAmanha");
+const hojeEl = document.getElementById("hoje");
+const amanhaEl = document.getElementById("amanha");
 
 btnHoje.addEventListener("click", () => {
-  document.getElementById("hoje").classList.remove("escondido");
-  document.getElementById("amanha").classList.add("escondido");
+  hojeEl.classList.remove("escondido");
+  amanhaEl.classList.add("escondido");
 
   if (!iniciouHoje) {
     iniciouHoje = true;
-    escrever(textoHoje, document.getElementById("hoje"));
+    escrever(textoHoje, hojeEl);
   }
 });
 
 btnAmanha.addEventListener("click", () => {
-  document.getElementById("amanha").classList.remove("escondido");
-  document.getElementById("hoje").classList.add("escondido");
+  amanhaEl.classList.remove("escondido");
+  hojeEl.classList.add("escondido");
 
   if (!iniciouAmanha) {
     iniciouAmanha = true;
-    escrever(textoAmanha, document.getElementById("amanha"));
+    escrever(textoAmanha, amanhaEl);
   }
 });
 </script>
