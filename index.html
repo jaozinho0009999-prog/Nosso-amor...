@@ -268,18 +268,16 @@
   color: #7a2e4d;
 }
 
-.texto-carta {
-  white-space: pre-line;
-  display: block;
-  margin-top: 15px;
-  font-size: 15px;
-  color: #4a2c2a
-  line-height: 1.6;
-  
-}
-
 .escondido {
   display: none;
+}
+
+.texto-carta {
+  white-space: pre-line;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  color: #5a2a2a;
+  margin-top: 15px;
 }
     .abas button:focus {
   background: #f38fb5;
@@ -522,69 +520,62 @@ com mais amor e menos feridas. 💗
   </div>
 </section>
 <script>
-  const abrirCarta = document.getElementById("abrirCarta");
-  const envelope = document.querySelector(".envelope");
-  const tecla = document.getElementById("tecla");
+const abrirCarta = document.getElementById("abrirCarta");
+const envelope = document.querySelector(".envelope");
 
-  const textoHoje = `
+const btnHoje = document.getElementById("btnHoje");
+const btnAmanha = document.getElementById("btnAmanha");
+
+const hojeDiv = document.getElementById("hoje");
+const amanhaDiv = document.getElementById("amanha");
+
+const textoHoje = `
 Hoje eu só quero ser honesto.
-Nem sempre eu soube agir do jeito certo com você.
-Algumas brincadeiras minhas passaram do limite,
+
+Nem sempre eu soube agir do jeito certo.
+Algumas brincadeiras minhas passaram do limite
 e eu sinto muito por isso.
+
+Não foi falta de amor,
+foi falta de cuidado.
 `;
 
-  const textoAmanha = `
-Amanhã eu quero cuidar melhor.
-Com mais calma, mais respeito
-e mais carinho em cada detalhe.
+const textoAmanha = `
+Amanhã eu quero ser melhor.
+
+Quero cuidar mais das palavras,
+dos gestos,
+e principalmente de nós.
+
+Quero que você sinta segurança,
+carinho
+e amor em tudo que eu fizer.
 `;
 
-  let iniciouHoje = false;
-  let iniciouAmanha = false;
+let cartaAberta = false;
 
-  function escrever(texto, el) {
-    let i = 0;
-    el.textContent = "";
-    function loop() {
-      if (i < texto.length) {
-        el.textContent += texto[i];
-        tecla.currentTime = 0;
-        tecla.play();
-        i++;
-        setTimeout(loop, 80);
-      }
-    }
-    loop();
-  }
-
-  abrirCarta.addEventListener("click", () => {
-    envelope.classList.add("aberto");
-    if (!iniciouHoje) {
-      iniciouHoje = true;
-      escrever(textoHoje, document.getElementById("hoje"));
-    }
-  });
-const hojeEl = document.getElementById("hoje");
-const amanhaEl = document.getElementById("amanha");
-
-btnHoje.addEventListener("click", () => {
-  hojeEl.classList.remove("escondido");
-  amanhaEl.classList.add("escondido");
-
-  if (!iniciouHoje) {
-    iniciouHoje = true;
-    escrever(textoHoje, hojeEl);
-  }
+// abrir envelope
+abrirCarta.addEventListener("click", () => {
+  envelope.classList.add("aberta");
+  cartaAberta = true;
 });
 
-btnAmanha.addEventListener("click", () => {
-  amanhaEl.classList.remove("escondido");
-  hojeEl.classList.add("escondido");
+// botão HOJE
+btnHoje.addEventListener("click", () => {
+  if (!cartaAberta) return;
 
-  if (!iniciouAmanha) {
-    iniciouAmanha = true;
-    escrever(textoAmanha, amanhaEl);
-  }
+  amanhaDiv.classList.add("escondido");
+  hojeDiv.classList.remove("escondido");
+  hojeDiv.textContent = textoHoje;
+});
+
+// botão AMANHÃ
+btnAmanha.addEventListener("click", () => {
+  if (!cartaAberta) return;
+
+  hojeDiv.classList.add("escondido");
+  amanhaDiv.classList.remove("escondido");
+  amanhaDiv.textContent = textoAmanha;
 });
 </script>
 </body>
