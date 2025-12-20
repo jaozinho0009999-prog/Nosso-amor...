@@ -225,6 +225,7 @@
   color: #7a2e4d;
   z-index: 3;
   transition: 0.6s;
+  pointer-events: none;
 }
 
 /* CARTA */
@@ -503,56 +504,51 @@ com mais amor e menos feridas. 💗
 <section class="carta-area">
   <div class="envelope" id="envelope">
 
-    <div class="tampa" id="abrirCarta">
-      <span>💌 Clique para abrir</span>
+    <div class="tampa">
+      💌 Clique para abrir
     </div>
-
-    <div class="carta">
-      <div class="abas">
+    
+      <div class="carta">
         <button id="btnHoje">Hoje</button>
         <button id="btnAmanha">Amanhã</button>
       </div>
 
-      <div class="texto-carta escondido" id="hoje"></div>
-      <div class="texto-carta escondido" id="amanha"></div>
+      <div class="texto-carta" id="texto">
+        Escolha uma das abas 💖
     </div>
-
   </div>
+
+</div>
 </section>
+
 <script>
-const envelope = document.getElementById("envelope");
-const abrirCarta = document.getElementById("abrirCarta");
-const btnHoje = document.getElementById("btnHoje");
-const btnAmanha = document.getElementById("btnAmanha");
-const texto = document.getElementById("texto");
+  const envelope = document.getElementById("envelope");
+  const btnHoje = document.getElementById("btnHoje");
+  const btnAmanha = document.getElementById("btnAmanha");
+  const texto = document.getElementById("texto");
 
-const textoHoje = `Hoje eu escrevo com o coração aberto.
-Reconheço que errei em algumas atitudes
-e que algumas brincadeiras passaram do limite.
+  const textoHoje = `Hoje eu escrevo com o coração aberto.
+  Reconheço que errei em atitudes
+  e em palavras.
 
-Eu sinto muito por isso.
-De verdade.`;
+  Eu sinto muito por isso.`;
 
-const textoAmanha = `Amanhã eu quero ser diferente.
-Mais cuidadoso, mais presente,
-mais responsável com o que sinto.
+  const textoAmanha = `Amanhã eu quero ser melhor.
+  Mais cuidadoso,
+  mais presente,
+  mais verdadeiro com nós dois.`;
 
-Quero reconstruir aos poucos,
-com carinho e respeito.`;
-
-abrirCarta.addEventListener("click", () => {
+  envelope.addEventListener("click", () => {
   envelope.classList.add("aberto");
-});
+  });
 
-btnHoje.addEventListener("click", () => {
+  btnHoje.addEventListener("click", () => {
   texto.textContent = textoHoje;
-});
+  });
 
-btnAmanha.addEventListener("click", () => {
+  btnAmanha.addEventListener("click", () => {
   texto.textContent = textoAmanha;
-});
-  <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+  });
 </script>
 </body>
     </html>
