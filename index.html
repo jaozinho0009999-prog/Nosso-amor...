@@ -535,46 +535,48 @@ com mais amor e menos feridas. 💗
     </div>
     
       <div class="carta">
-        <button id="btnHoje">Hoje</button>
-        <button id="btnAmanha">Amanhã</button>
-      </div>
+        <div class="abas">
+          <button id="btnHoje">Hoje</button>
+          <button id="btnAmanha">Amanhã</button>
+        </div>
 
-      <div class="texto-carta" id="texto">
-        Escolha uma das abas 💖
-    </div>
-  </div>
+        <div class="texto-carta" id="texto">
+          Escolha uma das abas 💖
+        </div>
+      </div>
 
 </div>
 </section>
 
 <script>
-  const envelope = document.getElementById("envelope");
-  const btnHoje = document.getElementById("btnHoje");
-  const btnAmanha = document.getElementById("btnAmanha");
-  const texto = document.getElementById("texto");
+const envelope = document.querySelector(".envelope");
+const btnHoje = document.getElementById("btnHoje");
+const btnAmanha = document.getElementById("btnAmanha");
+const texto = document.getElementById("textoCarta");
 
-  const textoHoje = `Hoje eu escrevo com o coração aberto.
-  Reconheço que errei em atitudes
-  e em palavras.
+const textoHoje = `Hoje eu reconheço
+onde errei,
+onde falhei,
+e onde te machuquei.`;
 
-  Eu sinto muito por isso.`;
+const textoAmanha = `Amanhã eu quero ser
+mais cuidadoso,
+mais presente,
+mais verdadeiro com nós dois.`;
 
-  const textoAmanha = `Amanhã eu quero ser melhor.
-  Mais cuidadoso,
-  mais presente,
-  mais verdadeiro com nós dois.`;
-
-  envelope.addEventListener("click", () => {
+envelope.addEventListener("click", () => {
   envelope.classList.add("aberto");
-  });
+});
 
-  btnHoje.addEventListener("click", () => {
+btnHoje.addEventListener("click", (e) => {
+  e.stopPropagation();
   texto.textContent = textoHoje;
-  });
+});
 
-  btnAmanha.addEventListener("click", () => {
+btnAmanha.addEventListener("click", (e) => {
+  e.stopPropagation();
   texto.textContent = textoAmanha;
-  });
+});
 </script>
 </body>
     </html>
